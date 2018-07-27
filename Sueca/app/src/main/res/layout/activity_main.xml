@@ -8,27 +8,38 @@
     android:padding="16dp"
     tools:context="com.charleston.sueca.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/question_container"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:letterSpacing="2SP"
-        android:text="SORTEANDO"
-        android:textColor="@android:color/white"
-        android:textSize="30sp"
-        android:visibility="gone"
-        tools:visibility="visible" />
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/question_txt_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/question_txt_explanation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
 
     <TextView
+        android:id="@+id/question_btn_play"
         android:layout_width="match_parent"
         android:layout_height="42dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:letterSpacing="2SP"
+        android:letterSpacing="2"
         android:text="JOGAR"
         android:textColor="@android:color/white"
-        android:textSize="20sp"
-        android:visibility="gone"
-        tools:visibility="visible" />
+        android:textSize="20sp" />
 </RelativeLayout>
