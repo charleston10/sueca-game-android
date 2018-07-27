@@ -15,27 +15,26 @@ class MainActivity : AppCompatActivity(), QuestionView {
         bindElements()
     }
 
-    override fun showLoading() {
-        question_btn_play.hide()
-        question_container.hide()
-    }
-
-    override fun hideLoading() {
-        question_container.show()
-        question_btn_play.show()
-    }
-
     override fun showQuestion(questionData: QuestionData) {
+        question_txt_description.show()
+
         question_txt_description.text = questionData.description
         question_txt_description.scaleCenter()
 
         if (questionData.explanation.isNotEmpty()) {
+            question_txt_explanation.show()
             question_txt_explanation.text = questionData.explanation
             question_txt_explanation.scaleCenter()
         }
     }
 
     private fun bindElements() {
-        question_btn_play.setOnClickListener { questionPresenter.sort() }
+        question_btn_play.setOnClickListener { play() }
+    }
+
+    private fun play() {
+        question_txt_description.hide()
+        question_txt_explanation.hide()
+        questionPresenter.sort()
     }
 }

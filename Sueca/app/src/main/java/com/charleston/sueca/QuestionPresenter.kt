@@ -50,12 +50,10 @@ class QuestionPresenter(private val questionView: QuestionView) {
     fun sort() {
         showLoading()
         questions.shuffle()
-        questionView.hideLoading()
         questionView.showQuestion(questions[0])
     }
 
     private fun showLoading() {
-        questionView.showLoading()
-        Thread.sleep(1000)
+        Thread.sleep(600)
     }
 }
