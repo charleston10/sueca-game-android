@@ -9,8 +9,28 @@ class QuestionPresenter(private val questionView: QuestionView) {
         questions.add(QuestionData("Escolhe duas pessoas para beber"))
         questions.add(QuestionData("Escolhe três pessoas para beber"))
         questions.add(QuestionData(
-                description = "Jogo do “Stop”",
-                explanation = "Quem tirou a carta do deque escolhe uma categoria e uma letra do alfabeto e dá um exemplo. O próximo jogador tem que seguir o padrão. O primeiro que errar ou não souber, bebe. Por exemplo: O jogador escolhe “carros com a letra A”, e dá como exemplo “Audi”. O próximo diz “Astra”. O outro “Alfa Romeu”, e assim por diante. "
+                description = "Jogo do “Stop”"
+        ))
+        questions.add(QuestionData(
+                description = "Jogo da Memória"
+        ))
+        questions.add(QuestionData(
+                description = "Jogo do “Pi”"
+        ))
+        questions.add(QuestionData(
+                description = "Regra Geral"
+        ))
+        questions.add(QuestionData(
+                description = "Cafofo"
+        ))
+        questions.add(QuestionData(
+                description = "O jogador à esquerda de quem tirou bebe uma dose"
+        ))
+        questions.add(QuestionData(
+                description = "Todas as mulheres da mesa bebem uma dose"
+        ))
+        questions.add(QuestionData(
+                description = "Todos os homens da mesa bebem uma dose"
         ))
     }
 
