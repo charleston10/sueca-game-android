@@ -3,6 +3,7 @@ package com.charleston.sueca
 class QuestionPresenter(private val questionView: QuestionView) {
 
     private val questions: ArrayList<QuestionData> = arrayListOf()
+    private var questionCurrent: QuestionData? = null
 
     init {
         createQuestions()
@@ -10,9 +11,15 @@ class QuestionPresenter(private val questionView: QuestionView) {
 
     fun sort() {
         showLoading()
-        val questionRandom = getCardRandom()
+        questionCurrent = getCardRandom()
 
-        questionView.showQuestion(questionRandom, questionRandom.getCardRandom())
+        if (questionCurrent != null) {
+            questionView.showQuestion(questionCurrent!!, questionCurrent!!.getCardRandom())
+        }
+    }
+
+    fun getQuestionCurrent(): QuestionData? {
+        return questionCurrent
     }
 
     private fun getCardRandom(): QuestionData {

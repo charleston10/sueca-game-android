@@ -14,11 +14,22 @@
         android:gravity="center"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/main_txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:letterSpacing="0.15"
+            android:text="SUECA"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
         <ImageView
             android:id="@+id/main_iv_card"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:src="@drawable/card_2c" />
+            android:layout_height="350dp"
+            android:src="@drawable/joker" />
 
         <TextView
             android:id="@+id/main_txt_description"
@@ -27,9 +38,24 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:letterSpacing="0.15"
-            android:textSize="22sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             tools:text="Todos bebem uma dose" />
+
+        <LinearLayout
+            android:id="@+id/main_ctn_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="4dp"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_question" />
+        </LinearLayout>
     </LinearLayout>
 
 
