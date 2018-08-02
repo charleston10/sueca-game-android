@@ -5,6 +5,26 @@ class QuestionPresenter(private val questionView: QuestionView) {
     private val questions: ArrayList<QuestionData> = arrayListOf()
 
     init {
+        createQuestions()
+    }
+
+    fun sort() {
+        showLoading()
+        val questionRandom = getCardRandom()
+
+        questionView.showQuestion(questionRandom, questionRandom.getCardRandom())
+    }
+
+    private fun getCardRandom(): QuestionData {
+        questions.shuffle()
+        return questions[0]
+    }
+
+    private fun showLoading() {
+        Thread.sleep(600)
+    }
+
+    private fun createQuestions() {
         questions.add(QuestionData(
                 description = "Escolhe uma pessoa para beber",
                 cards = arrayListOf(R.drawable.card_ac, R.drawable.card_ah, R.drawable.card_as, R.drawable.card_ad)
@@ -65,15 +85,5 @@ class QuestionPresenter(private val questionView: QuestionView) {
                 description = "Todos os homens da mesa bebem uma dose",
                 cards = arrayListOf(R.drawable.card_kc, R.drawable.card_kh, R.drawable.card_ks, R.drawable.card_kd)
         ))
-    }
-
-    fun sort() {
-        showLoading()
-        questions.shuffle()
-        questionView.showQuestion(questions[0])
-    }
-
-    private fun showLoading() {
-        Thread.sleep(600)
     }
 }

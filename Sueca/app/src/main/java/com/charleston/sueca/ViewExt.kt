@@ -1,10 +1,7 @@
 package com.charleston.sueca
 
 import android.view.View
-import android.view.animation.AccelerateInterpolator
-import android.view.animation.AlphaAnimation
-import android.view.animation.AnimationSet
-import android.view.animation.AnimationUtils
+import android.view.animation.*
 
 fun View.show() {
     this.visibility = View.VISIBLE
@@ -21,13 +18,12 @@ fun View.scaleCenter() {
     startAnimation(animation)
 }
 
-fun View.fadeOut(){
-    val fadeOut = AlphaAnimation(1f, 0f)
-    fadeOut.interpolator = AccelerateInterpolator() //and this
-    fadeOut.startOffset = 1000
-    fadeOut.duration = 1000
+fun View.fade(){
+    val fadeIn = AlphaAnimation(0f, 1f)
+    fadeIn.interpolator = DecelerateInterpolator()
+    fadeIn.duration = 1500
 
     val animation = AnimationSet(false)
-    animation.addAnimation(fadeOut)
-    setAnimation(animation)
+    animation.addAnimation(fadeIn)
+    startAnimation(animation)
 }

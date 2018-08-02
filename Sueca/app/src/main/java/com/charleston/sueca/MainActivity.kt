@@ -1,7 +1,10 @@
 package com.charleston.sueca
 
 import android.os.Bundle
+import android.support.annotation.IdRes
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
+import android.widget.ImageView
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -15,26 +18,39 @@ class MainActivity : AppCompatActivity(), QuestionView {
         bindElements()
     }
 
-    override fun showQuestion(questionData: QuestionData) {
-        question_txt_description.show()
-
-        question_txt_description.text = questionData.description
-        question_txt_description.scaleCenter()
-
-        if (questionData.explanation.isNotEmpty()) {
-            question_txt_explanation.show()
-            question_txt_explanation.text = questionData.explanation
-            question_txt_explanation.scaleCenter()
-        }
+    override fun showQuestion(questionData: QuestionData, @IdRes card: Int) {
+        animateCard(main_iv_card, card)
+        main_txt_description.text = questionData.description
+        main_txt_description.fade()
     }
 
     private fun bindElements() {
-        question_btn_play.setOnClickListener { play() }
+        main_btn_play.setOnClickListener { play() }
     }
 
     private fun play() {
-        question_txt_description.hide()
-        question_txt_explanation.hide()
         questionPresenter.sort()
+    }
+
+    private fun animateCard(view: ImageView, image: Int) {
+        val duration: Long = 750
+
+        view.animate()
+                .setDuration(duration)
+                .rotationYBy(180f)
+                .withEndAction {
+                    view.animate()
+                            .setDuration(duration)
+                            .rotationYBy(90f)
+                            .withEndAction {
+                                view.setImageDrawable(ContextCompat.getDrawable(this@MainActivity, image))
+                                view.animate()
+                                        .setDuration(duration)
+                                        .rotationYBy(90f)
+                                        .start()
+                            }
+                            .start()
+                }
+                .start()
     }
 }
