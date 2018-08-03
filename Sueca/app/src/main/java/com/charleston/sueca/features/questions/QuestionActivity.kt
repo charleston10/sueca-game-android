@@ -1,6 +1,8 @@
 package com.charleston.sueca.features.questions
 
 import android.app.AlertDialog
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.annotation.IdRes
 import android.support.v4.content.ContextCompat
@@ -16,6 +18,10 @@ import kotlinx.android.synthetic.main.activity_question.*
 class QuestionActivity : AppCompatActivity(), QuestionView {
 
     private val questionPresenter by lazy { QuestionPresenter(this) }
+
+    companion object {
+        fun getIntent(context: Context): Intent = Intent(context, QuestionActivity::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,7 +76,7 @@ class QuestionActivity : AppCompatActivity(), QuestionView {
                                 view.animate()
                                         .setDuration(duration)
                                         .rotationYBy(90f)
-                                        .withEndAction {  main_btn_play.isEnabled = true }
+                                        .withEndAction { main_btn_play.isEnabled = true }
                                         .start()
                             }
                             .start()
