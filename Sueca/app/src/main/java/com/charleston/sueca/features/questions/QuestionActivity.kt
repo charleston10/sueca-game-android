@@ -57,7 +57,7 @@ class QuestionActivity : AppCompatActivity(), QuestionView {
 
     private fun animateCard(view: ImageView, image: Int) {
         val duration: Long = 750
-
+        main_btn_play.isEnabled = false
         view.animate()
                 .setDuration(duration)
                 .rotationYBy(180f)
@@ -70,6 +70,7 @@ class QuestionActivity : AppCompatActivity(), QuestionView {
                                 view.animate()
                                         .setDuration(duration)
                                         .rotationYBy(90f)
+                                        .withEndAction {  main_btn_play.isEnabled = true }
                                         .start()
                             }
                             .start()
