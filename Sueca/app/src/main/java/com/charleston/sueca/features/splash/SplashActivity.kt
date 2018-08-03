@@ -5,6 +5,7 @@ import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import com.charleston.sueca.R
 import com.charleston.sueca.features.questions.QuestionActivity
+import kotlinx.android.synthetic.main.activity_splash.*
 
 /**
  * Created by charleston on 03/08/2018.
@@ -18,8 +19,10 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         Handler().postDelayed({
-            startActivity(QuestionActivity.getIntent(this))
-            finish()
+            splash_title.animate().alpha(0f).setDuration(500).withEndAction {
+                startActivity(QuestionActivity.getIntent(this))
+                finish()
+            }.start()
         }, splashDelay)
     }
 }
