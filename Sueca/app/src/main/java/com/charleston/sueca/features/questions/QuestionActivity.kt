@@ -1,22 +1,25 @@
-package com.charleston.sueca
+package com.charleston.sueca.features.questions
 
 import android.app.AlertDialog
-import android.app.DialogFragment
 import android.os.Bundle
 import android.support.annotation.IdRes
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.widget.ImageView
-import kotlinx.android.synthetic.main.activity_main.*
+import com.charleston.sueca.R
+import com.charleston.sueca.extensions.fade
+import com.charleston.sueca.extensions.hide
+import com.charleston.sueca.extensions.show
+import kotlinx.android.synthetic.main.activity_question.*
 
 
-class MainActivity : AppCompatActivity(), QuestionView {
+class QuestionActivity : AppCompatActivity(), QuestionView {
 
     private val questionPresenter by lazy { QuestionPresenter(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_question)
         bindElements()
 
         main_ctn_question.hide()
@@ -63,7 +66,7 @@ class MainActivity : AppCompatActivity(), QuestionView {
                             .setDuration(duration)
                             .rotationYBy(90f)
                             .withEndAction {
-                                view.setImageDrawable(ContextCompat.getDrawable(this@MainActivity, image))
+                                view.setImageDrawable(ContextCompat.getDrawable(this@QuestionActivity, image))
                                 view.animate()
                                         .setDuration(duration)
                                         .rotationYBy(90f)

@@ -1,4 +1,4 @@
-package com.charleston.sueca
+package com.charleston.sueca.features.questions
 
 data class QuestionData(
         var description: String,

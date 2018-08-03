@@ -1,4 +1,6 @@
-package com.charleston.sueca
+package com.charleston.sueca.features.questions
+
+import com.charleston.sueca.R
 
 class QuestionPresenter(private val questionView: QuestionView) {
 
@@ -6,7 +8,7 @@ class QuestionPresenter(private val questionView: QuestionView) {
     private var questionCurrent: QuestionData? = null
 
     init {
-        createQuestions()
+        initCards()
     }
 
     fun sort() {
@@ -15,6 +17,14 @@ class QuestionPresenter(private val questionView: QuestionView) {
 
         if (questionCurrent != null) {
             questionView.showQuestion(questionCurrent!!, questionCurrent!!.getCardRandom())
+            questions.remove(questionCurrent!!)
+            verifyReset()
+        }
+    }
+
+    private fun verifyReset(){
+        if(questions.size == 0){
+            initCards()
         }
     }
 
@@ -31,13 +41,20 @@ class QuestionPresenter(private val questionView: QuestionView) {
         Thread.sleep(600)
     }
 
-    private fun createQuestions() {
+    private fun initCards(){
+        questions.addAll(createQuestions())
+        questions.addAll(createQuestions())
+    }
+
+    private fun createQuestions() : ArrayList<QuestionData> {
+        val questions : ArrayList<QuestionData> = arrayListOf()
+
         questions.add(QuestionData(
-                description = "Escolhe uma pessoa para beber",
+                description = "Escolha uma pessoa para beber",
                 cards = arrayListOf(R.drawable.card_ac, R.drawable.card_ah, R.drawable.card_as, R.drawable.card_ad)
         ))
         questions.add(QuestionData(
-                description = "Escolhe duas pessoas para beber",
+                description = "Escolha duas pessoas para beber",
                 cards = arrayListOf(R.drawable.card_2c, R.drawable.card_2h, R.drawable.card_2s, R.drawable.card_2d)
         ))
         questions.add(QuestionData(
@@ -56,8 +73,8 @@ class QuestionPresenter(private val questionView: QuestionView) {
                 cards = arrayListOf(R.drawable.card_5c, R.drawable.card_5h, R.drawable.card_5s, R.drawable.card_5d)
         ))
         questions.add(QuestionData(
-                description = "Continência ",
-                explanation = "Quem tirou o 6 guarda a carta (não a devolve ao monte de descarte, como as demais) e usa-a quando quiser. Discretamente, essa pessoa deve colocar a mão na testa, fazendo continência e observar os outros jogadores. O último que perceber e fizer continência, bebe",
+                description = "Jogo do Vrum",
+                explanation = "Este jogo consiste em encenar-se movimentos de um carro através da pronuncia de três fonemas: (Vrum (acelerando), Irhh (freiando) Ploft (buraco). Cada jogador deve dar continuidade ao movimento anterior. Existem 3 movimentos possíveis que podem ser pronunciados: \"Vrum\": Segue para o próximo jogador no sentido atual, \"Irhh\": Inverte o sentido, \"Ploft\": Pula um jogador. Por exemplo, o jogo começa no sentido horário, o primeiro jogador fala um dos três fonemas, por exemplo Vrum, assim o próximo jogador no sentido horário deve continuar, este diz por exemplo Ploft, aí pula-se um jogador no sentido horário e o outro jogador deve continuar, se este falar Ploft, aí inverte-se o jogo para o sentido anti-horário e o jogador à direita do mesmo deve continuar pronunciando um dos três fonemas. Quem se perder ou errar bebe. Podem ocorrer casos de mais de uma pessoa beber.",
                 cards = arrayListOf(R.drawable.card_6c, R.drawable.card_6h, R.drawable.card_6s, R.drawable.card_6d)
         ))
         questions.add(QuestionData(
@@ -71,17 +88,17 @@ class QuestionPresenter(private val questionView: QuestionView) {
                 cards = arrayListOf(R.drawable.card_8c, R.drawable.card_8h, R.drawable.card_8s, R.drawable.card_8d)
         ))
         questions.add(QuestionData(
-                description = "Incontinência",
-                explanation = "A carta é guardada e usa quando o jogador quiser. Ao invés da continência, o jogador bebe duas doses e faz 1 pessoa beber uma dose se ela se negar, o jogador bebe mais 2 doses",
+                description = "Jogo do C ou S",
+                explanation = "O jogador que tirou a carta começa falando uma palavra, o próximo à direita deve falar uma palavra relacionada ao anterior e assim por diante. Não pode-se falar palavras que comecem com C ou S. Quem falar uma palavra não relacionada ou começando com C ou S bebe uma dose. Ex.: Telhado, Parede, Janela, Vidro, \"Copo\".",
                 cards = arrayListOf(R.drawable.card_9c, R.drawable.card_9h, R.drawable.card_9s, R.drawable.card_9d)
         ))
         questions.add(QuestionData(
                 description = "Cafofo",
-                explanation = "uma rodada de cafofo. (Uma pessoa escolhida aleatoriamente inventa um tema acerca do qual se possa fazer uma lista, como por exemplo \"marcas de carros\", ou \"apelidos para o Piuí\". Ao fazer isso, ele diz um nome. O seguinte, outro. E assim por diante, até que alguém não saiba ou diga algum que já foi dito. Caso isso ocorra, a pessoa deve beber uma dose da bebida)",
+                explanation = "Uma rodada de cafofo. (Uma pessoa escolhida aleatoriamente inventa um tema acerca do qual se possa fazer uma lista, como por exemplo \"marcas de carros\", ou \"apelidos para o Piuí\". Ao fazer isso, ele diz um nome. O seguinte, outro. E assim por diante, até que alguém não saiba ou diga algum que já foi dito. Caso isso ocorra, a pessoa deve beber uma dose da bebida)",
                 cards = arrayListOf(R.drawable.card_10c, R.drawable.card_10h, R.drawable.card_10s, R.drawable.card_10d)
         ))
         questions.add(QuestionData(
-                description = "Todas as mulheres da mesa bebem uma dose",
+                description = "Todas as mulheres da mesa bebem",
                 cards = arrayListOf(R.drawable.card_qc, R.drawable.card_qh, R.drawable.card_qs, R.drawable.card_qd)
         ))
         questions.add(QuestionData(
@@ -89,8 +106,10 @@ class QuestionPresenter(private val questionView: QuestionView) {
                 cards = arrayListOf(R.drawable.card_jc, R.drawable.card_jh, R.drawable.card_js, R.drawable.card_jd)
         ))
         questions.add(QuestionData(
-                description = "Todos os homens da mesa bebem uma dose",
+                description = "Todos os homens da mesa bebem",
                 cards = arrayListOf(R.drawable.card_kc, R.drawable.card_kh, R.drawable.card_ks, R.drawable.card_kd)
         ))
+
+        return questions
     }
 }

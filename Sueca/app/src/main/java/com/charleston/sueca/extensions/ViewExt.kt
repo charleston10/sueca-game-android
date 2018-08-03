@@ -1,7 +1,8 @@
-package com.charleston.sueca
+package com.charleston.sueca.extensions
 
 import android.view.View
 import android.view.animation.*
+import com.charleston.sueca.R
 
 fun View.show() {
     this.visibility = View.VISIBLE

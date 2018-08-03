@@ -1,4 +1,4 @@
-package com.charleston.sueca
+package com.charleston.sueca.features.questions
 
 import android.support.annotation.IdRes
 
