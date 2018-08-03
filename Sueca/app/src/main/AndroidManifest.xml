@@ -10,14 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".features.questions.QuestionActivity"/>
-
         <activity android:name=".features.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".features.questions.QuestionActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".features.onboarding.OnboardingActivity"
+            android:screenOrientation="portrait" />
 
     </application>
 

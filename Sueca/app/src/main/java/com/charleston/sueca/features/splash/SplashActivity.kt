@@ -10,9 +10,11 @@ import kotlinx.android.synthetic.main.activity_splash.*
 /**
  * Created by charleston on 03/08/2018.
  */
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseActivity() {
 
     private val splashDelay: Long = 3000
+
+    override fun screenName(): String = "SplashActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
